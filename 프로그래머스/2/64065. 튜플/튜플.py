@@ -31,7 +31,8 @@ def sort_by_len(set_list):
 
 def solution(s):
     set_list = string_to_list(s)
-    sort_by_len(set_list)
+    #sort_by_len(set_list)
+    set_list.sort(key=len)
     
     answer = [int(set_list[0][0])]
     for i in range(1, len(set_list)):
