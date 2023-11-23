@@ -112,7 +112,9 @@ def solution(places):
                     is_validation_failed = True
                     break
                 continue
-            if place[min(person_1_pos[0],person_2_pos[0])+1][min(person_1_pos[1],person_2_pos[1])+1] == "O":
+            
+            # 두 사람이 서로 대각선 상에 위치하는 경우
+            if place[person_1_pos[0]][person_2_pos[1]] == "O" or place[person_2_pos[0]][person_1_pos[1]] == "O":
                 answer.append(0)
                 is_validation_failed = True
                 break
