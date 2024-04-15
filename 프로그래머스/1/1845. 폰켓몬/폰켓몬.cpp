@@ -1,8 +1,8 @@
 #include <vector>
-#include <set>
+#include <unordered_set>
 using namespace std;
 
-set<int> types;
+unordered_set<int> types;
 
 int solution(vector<int> nums)
 {
