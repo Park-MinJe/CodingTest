@@ -6,6 +6,7 @@
 using namespace std;
 
 queue<pair<int, int>> q;    // <우선순위, 초기 위치>
+priority_queue<int> pqPriorities;
 
 int solution(vector<int> priorities, int location) {
     int inputSize = priorities.size();
@@ -13,6 +14,7 @@ int solution(vector<int> priorities, int location) {
         q.push(make_pair(
             priorities[i], i
         ));
+        pqPriorities.push(priorities[i]);
     }
     
     int cnt = 0;
@@ -20,6 +22,18 @@ int solution(vector<int> priorities, int location) {
         pair<int, int> curProcess = q.front();
         q.pop();
         
+        if(curProcess.first < pqPriorities.top()){
+            q.push(curProcess);
+            continue;
+        }
+        
+        pqPriorities.pop();
+        ++cnt;
+        if(curProcess.second == location){
+            return cnt;
+        }
+        
+        /*
         bool isExecutable = true;
         queue<pair<int, int>> tmp;
         while(!q.empty()){
@@ -48,5 +62,6 @@ int solution(vector<int> priorities, int location) {
         else{
             q.push(curProcess);
         }
+        */
     }
 }
