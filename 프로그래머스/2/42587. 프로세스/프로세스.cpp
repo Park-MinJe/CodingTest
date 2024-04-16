@@ -32,36 +32,5 @@ int solution(vector<int> priorities, int location) {
         if(curProcess.second == location){
             return cnt;
         }
-        
-        /*
-        bool isExecutable = true;
-        queue<pair<int, int>> tmp;
-        while(!q.empty()){
-            pair<int, int> tmpP = q.front();
-            tmp.push(tmpP);
-            q.pop();
-            
-            if(tmpP.first > curProcess.first){
-                isExecutable = false;
-            }
-        }
-        while(!tmp.empty()){
-            q.push(tmp.front());
-            tmp.pop();
-        }
-        
-        if(isExecutable){
-            if(curProcess.second == location){
-                ++cnt;
-                return cnt;
-            }
-            else{
-                ++cnt;
-            }
-        }
-        else{
-            q.push(curProcess);
-        }
-        */
     }
 }
