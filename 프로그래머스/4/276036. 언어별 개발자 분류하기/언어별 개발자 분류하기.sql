@@ -1,0 +1,22 @@
+-- 코드를 작성해주세요
+WITH LST AS (
+    SELECT DISTINCT 
+        CASE
+            WHEN (SKILL_CODE & (SELECT SUM(CODE) FROM SKILLCODES WHERE CATEGORY = 'Front End'))
+                 && (SKILL_CODE & (SELECT SUM(CODE) FROM SKILLCODES WHERE NAME = 'Python'))
+                THEN 'A'
+            WHEN SKILL_CODE & (SELECT SUM(CODE) FROM SKILLCODES WHERE NAME = 'C#')
+                THEN 'B'
+            WHEN SKILL_CODE & (SELECT SUM(CODE) FROM SKILLCODES WHERE CATEGORY = 'Front End')
+                THEN 'C'
+            ELSE NULL
+        END GRADE, 
+        ID, 
+        EMAIL
+    FROM DEVELOPERS 
+    ORDER BY GRADE, ID
+)
+
+SELECT *
+FROM LST
+WHERE GRADE IS NOT NULL
